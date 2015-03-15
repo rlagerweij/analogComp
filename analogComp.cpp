@@ -199,7 +199,7 @@ uint8_t analogComp::getOutput() {
         _initialized = 0;
     }
 
-    if ((ACSR && (1<<ACO)) { //check if output flag is set
+    if (ACSR && (1<<ACO)) { //check if output flag is set
             _output = 1;
         }
 
