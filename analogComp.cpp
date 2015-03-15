@@ -189,6 +189,27 @@ uint8_t analogComp::waitComp(unsigned long _timeOut) {
 	return 0;
 }
 
+uint8_t analogComp::getOutput() {
+
+    uint8_t _output = 0;
+
+    //set up the analog comparator if it isn't
+    if (!_initialized) {
+        setOn(AIN0, AIN1);
+        _initialized = 0;
+    }
+
+    if ((ACSR && (1<<ACO)) { //check if output flag is set
+            _output = 1;
+        }
+
+    //switch off the analog comparator if it was off
+    if (!_initialized) {
+        setOff();
+    }
+
+    return _output;
+}
 
 //ISR (Interrupt Service Routine) called by the analog comparator when
 //the user choose the raise of an interrupt

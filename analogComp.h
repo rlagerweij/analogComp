@@ -86,6 +86,7 @@ class analogComp {
         void enableInterrupt(void (*)(void), uint8_t tempMode = CHANGE);
         void disableInterrupt(void);
         uint8_t waitComp(unsigned long = 0);
+        uint8_t getOutput();
     private:
         //private methods
 };
