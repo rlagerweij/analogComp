@@ -177,7 +177,7 @@ uint8_t analogComp::waitComp(unsigned long _timeOut) {
 	//wait for the comparation
 	unsigned long _tempMillis = millis() + _timeOut;
 	do {
-		if ((ACSR && (1<<ACO)) == 1) { //event raised
+		if (getOutput() == 1) { //event raised
 			return 1;
 		}
 	} while ((long)(millis() - _tempMillis) < 0);
