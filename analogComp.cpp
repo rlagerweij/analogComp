@@ -17,6 +17,9 @@ uint8_t oldADCSRA;
 
 //setting and switching on the analog comparator
 uint8_t analogComp::setOn(uint8_t tempAIN0, uint8_t tempAIN1) {
+    
+    uint8_t _delay = 0;
+
     if (_initialized) { //already running
         return 1;
     }
@@ -28,6 +31,7 @@ uint8_t analogComp::setOn(uint8_t tempAIN0, uint8_t tempAIN1) {
     //choose the input for non-inverting input
     if (tempAIN0 == INTERNAL_REFERENCE) {
         ACSR |= (1<<ACBG); //set Internal Voltage Reference (1V1)
+        _delay = 100;
     } else {
         ACSR &= ~(1<<ACBG); //set pin AIN0
     }
@@ -79,6 +83,9 @@ uint8_t analogComp::setOn(uint8_t tempAIN0, uint8_t tempAIN1) {
 #elif defined (ATMEGAx8) || defined(ATMEGAx4) || defined(ATMEGAx0)
     DIDR1 &= ~((1<<AIN1D) | (1<<AIN0D));
 #endif
+
+    delayMicroseconds(_delay);  // allow internal bandgap voltage to stabilise, _delay = 0 when bandgap is not used
+
     _initialized = 1;
     return 0; //OK
 }
@@ -106,6 +113,7 @@ void analogComp::enableInterrupt(void (*tempUserFunction)(void), uint8_t tempMod
         ACSR |= ((1<<ACIS1) | (1<<ACIS0));
 
     }
+
     //enable interrupts
     ACSR |= (1<<ACIE);
     SREG |= (1<<SREG_I);
