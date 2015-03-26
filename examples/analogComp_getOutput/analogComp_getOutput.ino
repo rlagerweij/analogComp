@@ -35,7 +35,7 @@ void setup() {
     //opens the serial comm
     Serial.begin(9600);
     delay(2000);
-
+    analogComparator.setOn(AIN0, AIN1);
 }
 
 //main loop
