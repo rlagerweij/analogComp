@@ -14,6 +14,7 @@ setOn	KEYWORD2
 setOff	KEYWORD2
 enableInterrupt	KEYWORD2
 disableInterrupt	KEYWORD2
+resumeInterrupt	KEYWORD2
 waitComp	KEYWORD2
 getOutput	KEYWORD2
 

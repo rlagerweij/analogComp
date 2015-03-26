@@ -85,6 +85,7 @@ class analogComp {
         void setOff(void);
         void enableInterrupt(void (*)(void), uint8_t tempMode = CHANGE);
         void disableInterrupt(void);
+        void resumeInterrupt(void);
         uint8_t waitComp(unsigned long = 0);
         uint8_t getOutput();
     private:

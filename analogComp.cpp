@@ -131,6 +131,17 @@ void analogComp::disableInterrupt(void) {
 }
 
 
+void analogComp::resumeInterrupt(void) {
+    if (!_initialized) || (null == userFunction)) {
+        return;
+    }
+    SREG &= ~(1<<SREG_I);
+    ACSR &= (1<<ACIE); //disable interrupt
+    SREG &= (1<<SREG_I);
+    _interruptEnabled = 1;
+}
+
+
 //switch off the analog comparator
 void analogComp::setOff() {
     if (_initialized) {
