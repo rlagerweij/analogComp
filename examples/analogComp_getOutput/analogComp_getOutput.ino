@@ -40,8 +40,8 @@ void setup() {
 
 //main loop
 void loop() {
-	if (analogComparator.getOutput()) {
-		Serial.println("Comparator output is high");
+    if (analogComparator.getOutput()) {
+        Serial.println("Comparator output is high");
         delay(500);
-	}
+    }
 }
