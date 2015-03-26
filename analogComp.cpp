@@ -9,10 +9,10 @@
 
 //global variables
 typedef void (*userFunc)(void);
-volatile static userFunc userFunction;
-uint8_t _initialized;
-uint8_t _interruptEnabled;
-uint8_t oldADCSRA;
+volatile static userFunc userFunction = null;
+uint8_t _initialized = 0;
+uint8_t _interruptEnabled = 0;
+uint8_t oldADCSRA = 0;
 
 
 //setting and switching on the analog comparator
