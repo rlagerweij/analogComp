@@ -9,7 +9,7 @@
 
 //global variables
 typedef void (*userFunc)(void);
-volatile static userFunc userFunction = null;
+volatile static userFunc userFunction = NULL;
 uint8_t _initialized = 0;
 uint8_t _interruptEnabled = 0;
 uint8_t oldADCSRA = 0;
@@ -132,7 +132,7 @@ void analogComp::disableInterrupt(void) {
 
 
 void analogComp::resumeInterrupt(void) {
-    if (!_initialized) || (null == userFunction)) {
+    if ((!_initialized) || (NULL == userFunction)) {
         return;
     }
     SREG &= ~(1<<SREG_I);
