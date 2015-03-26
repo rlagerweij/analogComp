@@ -222,8 +222,10 @@ uint8_t analogComp::getOutput() {
 //ISR (Interrupt Service Routine) called by the analog comparator when
 //the user choose the raise of an interrupt
 #if defined(ATMEGAx8) || defined(ATMEGAx0) || defined(ATMEGAx4)
+ISR(ANALOG_COMP_vect) __attribute__ ((weak));
 ISR(ANALOG_COMP_vect) {
 #else
+ISR(ANA_COMP_vect) __attribute__ ((weak));
 ISR(ANA_COMP_vect) {
 #endif
     userFunction(); //call the user function
